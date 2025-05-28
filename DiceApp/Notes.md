@@ -22,12 +22,14 @@ void main() {
   );
 }
 ```
+```
 main(): The entry point of the Flutter app.
 runApp(): Boots up the app and takes a widget as its argument.
 MaterialApp: A wrapper that sets up the Material Design layout for the app.
 Scaffold: A basic visual layout structure from the Material library.
 backgroundColor: Colors.red: Sets the background color of the entire screen to red.
 body: DiceApp(): Places the custom DiceApp widget in the body of the scaffold.
+```
 ```dart
 class DiceApp extends StatefulWidget {
   const DiceApp({super.key});
@@ -41,10 +43,11 @@ State<DiceApp> createState() {
   return _DiceAppState();
 }
 ```
-
+```
 @override: Tells Dart this method overrides the parent class’s version.
 createState(): A method from StatefulWidget that must return a subclass of State.
 _DiceAppState: The class that will contain the mutable state and UI logic.
+```
 🧠 _DiceAppState Class
 ```dart
 class _DiceAppState extends State<DiceApp> {
