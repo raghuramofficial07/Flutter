@@ -114,3 +114,239 @@ class ExpensesList extends StatelessWidget {
   }
 }
 ```
+
+# Flutter UI and State Management Notes
+
+---
+
+## 📌 When `setState()` is Called
+
+When a `setState()` is called in a `State` class, Flutter **re-executes the `build()` method** to reflect UI changes.
+
+---
+
+## 🧱 Arranging Content in Flutter
+
+If we want to arrange content on the screen perfectly and as we desire, we use certain **layout widgets** like:
+
+- `Column()`
+- `Row()`
+
+### 📦 Example Usage
+
+To use these, we typically use them inside a widget like `Scaffold`:
+
+```dart
+class _ExpensesState extends State<Expenses> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          // Content goes here
+        ],
+      ),
+    );
+  }
+}
+```
+
+🔹 Use child if you are adding only one widget inside a container.
+🔹 Use children[] if you are adding multiple widgets.
+
+❓ Topics to Be Finalized / Learned
+
+🔄 initState() in Flutter – Initializers
+Purpose: Runs only once when the widget is inserted into the widget tree.
+Used for setup operations like loading data, starting animations, or setting initial values.
+```
+@override
+void initState() {
+  super.initState();
+  // Initialization code here
+}
+```
+🧾 enum Type – Explanation & Syntax
+Enums are used to define a set of named constant values.
+
+```
+
+enum ExpenseCategory {
+  food,
+  travel,
+  shopping,
+  bills,
+}
+
+```
+Why use it?
+
+Improves code readability
+Helps enforce strict value types
+Works great with switch-case logic
+📋 When Do We Use List<Expense> in Dart/Flutter?
+
+To store multiple Expense objects in one place.
+When we want to display a list of expenses in the UI (e.g., using ListView).
+To add new expenses dynamically using .add() or .insert().
+To calculate the total amount spent using .fold() or .map().
+To filter expenses based on conditions (e.g., amount > 100).
+To pass a list of expenses from one widget to another.
+To load expenses from a database or API and store them.
+Helps ensure type safety — only Expense objects are allowed.
+📏 Spacer() Widget
+
+`Spacer()` is used in Row or Column to create adjustable empty space between widgets.
+
+Expands to fill available space
+Often used to push widgets to opposite ends
+Example:
+```
+Row(
+  children: [
+    Text('Left'),
+    Spacer(),
+    Text('Right'),
+  ],
+)
+```
+
+🧭 Using `Row()` inside another `Row()`
+
+Embedding one Row() inside another allows better alignment and separation of content, especially when you want to organize items in rows within rows.
+
+🃏 Card() Widget
+
+The Card widget is used to display information in a box with:
+
+Elevation (shadow)
+Rounded corners
+A material design look
+Example:
+```
+Card(
+  elevation: 4,
+  margin: EdgeInsets.all(8),
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Text('This is a card'),
+  ),
+)
+```
+
+❗️Fixing Layout Errors with ListView in Column
+
+The issue occurs when your ExpensesList (which uses a ListView) is placed directly inside a Column without using Expanded.
+
+Why?
+
+ListView doesn’t know how much height to use.
+This causes rendering errors or empty space.
+✅ Solution: Wrap with Expanded
+```
+Column(
+  children: [
+    Expanded(
+      child: ExpensesList(),
+    ),
+  ],
+)
+```
+
+🧠 Notes on TextEditingController in Flutter
+
+📌 Purpose:
+To control and monitor the text being edited in a TextField or TextFormField.
+
+🔧 Usage:
+Attach it to a TextField using the controller property.
+Access current text with .text
+Update text programmatically using `.text`
+
+✅ Example:
+```
+final _controller = TextEditingController();
+
+TextField(
+  controller: _controller,
+);
+```
+// To get the value:
+`print(_controller.text);`
+
+`🗑 Disposing:`
+
+Always call .dispose() on the controller in the dispose() method to avoid memory leaks:
+```
+@override
+void dispose() {
+  _controller.dispose();
+  super.dispose();
+}
+```
+🕓 When to Use:
+To read the text input value
+To set the text programmatically
+To listen for changes in the text field
+Summary:
+TextEditingController is essential for managing text input in forms. Always dispose of it when done.
+
+## Flutter _AssertionError – Cause & Fix (TextField inside Row)
+
+🛑 Error Type:
+`_AssertionError from dart:core-patch/errors_patch.dart`
+
+⚠️ Cause:
+Using a TextField inside a Row without width constraints.
+
+Why It Fails:
+
+Row gives children unbounded horizontal space
+TextField tries to take infinite width
+Flutter asserts that widget width must be finite → Assertion fails
+🛠 Fixes:
+
+## Option 1: Use Expanded
+```
+Row(
+  children: [
+    Expanded(
+      child: TextField(),
+    ),
+  ],
+)
+```
+## Option 2: Use Flexible
+
+```
+Row(
+  children: [
+    Flexible(
+      child: TextField(),
+    ),
+  ],
+)
+```
+## Option 3: Use SizedBox or Set Width
+```
+Row(
+  children: [
+    SizedBox(
+      width: 200,
+      child: TextField(),
+    ),
+  ],
+)
+```
+## Option 4: Remove Row if Not Needed
+
+TextField()
+Summary:
+Always constrain the width when placing a TextField inside a Row, or you'll get an _AssertionError during render.
+
+
+
+--------------
+
+
+`To Be Continued on `CodeBook(1).md`
