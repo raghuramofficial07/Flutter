@@ -176,5 +176,5 @@ class ResponsiveExample extends StatelessWidget {
 
 
 
-> The Entire Content on This Page is Purly Belongs to [`RaghuRam `](https://raghuramdev.blogspot.com) ...
+> The Entire Content on This Page is purely Belongs to [`RaghuRam `](https://raghuramdev.blogspot.com) ...
 > on June 4 , 2025
