@@ -176,5 +176,8 @@ class ResponsiveExample extends StatelessWidget {
 
 
 
-> The Entire Content on This Page is purely Belongs to [`RaghuRam `](https://raghuramdev.blogspot.com) ...
-> on June 4 , 2025
+---
+
+> ✍️ Authored by [Vemparala Sri Satya RaghuRam](https://raghuramdev.blogspot.com)  
+> 📅 Last updated: June 4, 2025  
+> 📘 Part of the `Code Book` series — real-world code + crystal clear notes.
