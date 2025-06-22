@@ -1,3 +1,5 @@
+<img width="841" alt="Screenshot 2025-06-22 at 10 51 31 AM" src="https://github.com/user-attachments/assets/501c98ee-809c-4376-b32d-6d38ae07c489" />
+
 # 🎲 DiceApp in Flutter — Full Breakdown
 
 This Flutter application simulates a dice roller. When the user taps a button, it generates a random number between 1 and 6 and displays a corresponding dice image from the assets folder.
